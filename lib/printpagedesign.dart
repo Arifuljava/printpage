@@ -48,10 +48,10 @@ class _printpagedesignState extends State<printpagedesign> {
           mainAxisSize: MainAxisSize.min,
           children: [
             Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Container(
-                  margin: EdgeInsets.all(10),
+                  margin: EdgeInsets.only(left: 20,top: 10,right: 10,bottom: 10),
                   padding: EdgeInsets.all(2),
                   alignment: Alignment.centerLeft,
                   child: GestureDetector(
@@ -74,7 +74,7 @@ class _printpagedesignState extends State<printpagedesign> {
                   ),
                 ),
                 Container(
-                  margin: EdgeInsets.all(10),
+                  margin: EdgeInsets.only(top: 10,left: 10,right: 20,bottom: 10),
                   padding: EdgeInsets.all(2),
 
                   alignment: Alignment.centerRight,
@@ -107,7 +107,10 @@ class _printpagedesignState extends State<printpagedesign> {
                   });
                 },
                 children: items.map((String item) {
-                  return Text(item);
+                  return Container(
+                    margin: EdgeInsets.only(top: 5,left: 10,right: 10),
+                    child: Text(item,style: TextStyle(color: Colors.black54,fontSize: 15),),
+                  );
                 }).toList(),
               ),
             ),
@@ -129,6 +132,11 @@ class _printpagedesignState extends State<printpagedesign> {
       // Update the state variable
       setState(() {
         _counter++;
+        final screenWidth = MediaQuery.of(context).size.width;
+        final screenHeight = MediaQuery.of(context).size.height;
+        print(screenWidth);
+        print(screenHeight);
+
 
 
         //  print("gettt");
@@ -147,10 +155,12 @@ class _printpagedesignState extends State<printpagedesign> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+
       home: Scaffold(
         backgroundColor: Colors.grey.shade200,
         appBar: AppBar(
-          title: Text("Print  Page Design"),
+          title: Text("Create Label",style: TextStyle(fontSize:15),),
+          backgroundColor:  Color(0xff004368),
         ),
         body: Column(
           children: [
@@ -180,26 +190,31 @@ class _printpagedesignState extends State<printpagedesign> {
 
                     alignment: Alignment.centerRight,
 
-                    child: Row(
-                       children: [
-                         GestureDetector(
-                           onTap: (){
-                             _showPickerDialog(context);
-                           },
-                           child: Text(
-                             "$itemmm",
-                             style: TextStyle(color: Colors.black54),
-                           ),
-                         ),
-                         GestureDetector(
-                           onTap: (){
-                             _showPickerDialog(context);
-                           },child: Icon(
-                           Icons.arrow_forward_ios,size: 15,
-                           color: Colors.black54,
-                         ),
-                         )
-                       ],
+                    child: GestureDetector(
+                      onTap: (){
+                        _showPickerDialog(context);
+                      },
+                      child: Row(
+                        children: [
+                          GestureDetector(
+                            onTap: (){
+                              _showPickerDialog(context);
+                            },
+                            child: Text(
+                              "$itemmm",
+                              style: TextStyle(color: Colors.black54),
+                            ),
+                          ),
+                          GestureDetector(
+                            onTap: (){
+                              _showPickerDialog(context);
+                            },child: Icon(
+                            Icons.arrow_forward_ios,size: 15,
+                            color: Colors.black54,
+                          ),
+                          )
+                        ],
+                      ),
                     ),
                   )
                 ],

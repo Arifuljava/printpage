@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:printpage/bottomview.dart';
 import 'package:printpage/pickersettings.dart';
 import 'package:printpage/printpagedesign.dart';
-
+import 'package:printpage/createabitmapp.dart';
 void main() {
   runApp(const MyApp());
 }
